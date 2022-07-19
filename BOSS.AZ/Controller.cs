@@ -7,6 +7,7 @@ using DatabaseNamespace;
 using UserNamespace;
 using VacancieNamespace;
 using CVnamespace;
+using NotificationNamespace;
 namespace ControllerNamespace
 {
     public class Controller
@@ -21,10 +22,11 @@ namespace ControllerNamespace
                       Name = "Remzi",
                        Age=18,
                         City="Naxhivan",
-                         Password ="18022004",
+                         Password ="123456",
                           Phone="+994552554321",
                            Surname="Hesenov",
                             Username="hesenof_075",
+                             Email="remzihesenoff075@gmail.com",
                             Cvs = new List<CV>
                             {
                                 new CV
@@ -58,6 +60,8 @@ namespace ControllerNamespace
                           Phone="+994778526482",
                            Surname="Eminov",
                             Username="nihat_eminov",
+                             Email="nihateminov00@gmail.com",
+
                             Cvs = new List<CV>
                             {
                                 new CV
@@ -107,8 +111,10 @@ namespace ControllerNamespace
                         Name="Elgun",
                          Username = "elgun_123",
                           Surname="Memmedzade",
-                           Password = "memmed123",
+                           Password = "123456",
                             Phone="+994555876382",
+                             Email="elgunmemmedxade34@gmail.com",
+
                              Vacancies=new List<Vacancie>
                              {
                                  new Vacancie
@@ -138,8 +144,10 @@ namespace ControllerNamespace
                         Name="Xanim",
                          Username = "xanim_quluyeva",
                           Surname="Quluyeva",
-                           Password = "xanim123",
+                           Password = "123456",
                             Phone="+994555642192",
+                             Email="xanimquluyeva989@gmail.com",
+
                              Vacancies=new List<Vacancie>
                              {
                                  new Vacancie
@@ -166,21 +174,27 @@ namespace ControllerNamespace
         };
         public static void Start()
         {
-            int select = 0;
-            Console.WriteLine("SIGN IN [1]");
-            Console.WriteLine("SIGN UP [2]");
-            select=int.Parse(Console.ReadLine());
-            if (select == 1)
+            while (true)
             {
-                SignIn();
-            }
-            else if (select == 2)
-            {
-                SignUp();
-            }
-            else
-            {
+                Console.Clear();
+                int select = 0;
+                Console.WriteLine("SIGN IN [1]");
+                Console.WriteLine("SIGN UP [2]");
+                select = int.Parse(Console.ReadLine());
+                if (select == 1)
+                {
+                    SignIn();
+                }
+                else if (select == 2)
+                {
+                    SignUp();
+                }
+                else
+                {
 
+                }
+                Console.WriteLine("Press any key to continue ...  ");
+                Console.ReadKey();
             }
         }
         public static void SignIn()
@@ -195,47 +209,19 @@ namespace ControllerNamespace
 
             if (CurrentUser != null)
             {
-                if(CurrentUser is Worker)
+                if (CurrentUser is Worker)
                 {
-                    Worker CurrentWorker = (Worker)CurrentUser;
-                    Console.WriteLine("Show All Vacancies ".PadRight(20)+"[1]");
-                    Console.WriteLine("Apply To Vacancie ".PadRight(20)+"[2]");
-                    Console.WriteLine("Add CV ".PadRight(20)+"[3]");
-
-                    int select = int.Parse(Console.ReadLine());
-                    if (select == 1)
-                    {
-                        database.ShowAllVacancies();
-                    }
-                    else if(select == 2)
-                    {
-                        database.ShowAllVacancies();
-                        Console.WriteLine("Choose Vacancie with ID [-1 exit] : ");
-                        int id = int.Parse(Console.ReadLine());
-                        if (id == -1)
-                        {
-                            Start();
-                        }
-                        /*------------------------------------------------*/
-                    }
-                    else if (select == 3)
-                    {
-                        CV cV = database.GetCV();
-                        CurrentWorker.Cvs.Add(cV);
-                    }
-
+                    WorkerPage();
                 }
-                else if(CurrentUser is Employer)
+                else if (CurrentUser is Employer)
                 {
-                    Employer CurrentEmployer = (Employer)CurrentUser;
-
+                    EmployerPage();
                 }
                 else
                 {
                     Console.WriteLine("Oops... Something went wrong. Enter again");
                     Start();
                 }
-
             }
             else
             {
@@ -244,6 +230,155 @@ namespace ControllerNamespace
             }
 
 
+        }
+        public static void EmployerPage()
+        {
+            Employer CurrentEmployer = (Employer)CurrentUser;
+            Console.WriteLine("Show Vacancies : ".PadRight(22) + "[1]");
+            Console.WriteLine("Show Notifications : ".PadRight(22) + "[2]");
+            Console.WriteLine("Add Vacancies : ".PadRight(22) + "[3]");
+            Console.WriteLine("Exit : ".PadRight(22) + "[4]");
+            int select = int.Parse(Console.ReadLine());
+            if (select == 1)
+            {
+                CurrentEmployer.ShowVacancies();
+                Console.WriteLine("Press any key to continue ...  ");
+                Console.ReadKey();
+                EmployerPage();
+            }
+            else if (select == 2)
+            {
+                foreach (var vacancie in CurrentEmployer.Vacancies)
+                {
+                    vacancie.ShowNotificatons();
+                }
+                Console.WriteLine("Select  Notification ID for reply [-1 exit]: ");
+                int id = int.Parse(Console.ReadLine());
+                if (id == -1)
+                {
+                    EmployerPage();
+                }
+                Notification notification = database.GetNotificationById(id);
+                Worker worker = database.GetWorkerById(notification.WorkerID);
+                Vacancie CurrentVacancie = null;
+                string CompanyName = string.Empty;
+                foreach (var vacancie in CurrentEmployer.Vacancies)
+                {
+                    foreach (var n in vacancie.notifications)
+                    {
+                        if (n.Id == notification.Id)
+                        {
+                            CompanyName = vacancie.Name;
+                            CurrentVacancie=vacancie;
+                            break;
+                        }
+                    }
+                }
+
+                if (worker != null)
+                {
+                    Console.WriteLine("accept [1]  or  reject [2]  : ");
+                    select = int.Parse(Console.ReadLine());
+                    if (select == 1)
+                    {
+                        worker.Notifications.Add($@"You are accepted to {CompanyName} at {DateTime.Now.ToString()}. Contact us!");
+                        CurrentEmployer.Vacancies.Remove(CurrentVacancie);
+                        worker.UnreadNotificationsCount++;  
+                    }
+                    else if (select == 2)
+                    {
+                        worker.Notifications.Add($@"You are rejected by {CompanyName} at {DateTime.Now.ToString()}.");
+                        worker.UnreadNotificationsCount++;
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            else if (select == 3)
+            {
+                Vacancie vacancie = database.GetVacancie();
+                CurrentEmployer.Vacancies.Add(vacancie);
+            }
+            else if (select == 4)
+            {
+                Start();
+            }
+            else
+            {
+/*---------------------------------------------*/
+            }
+
+
+        }
+        public static void WorkerPage()
+        {
+            Worker CurrentWorker = (Worker)CurrentUser;
+            Console.WriteLine("Show All Vacancies ".PadRight(22) + "[1]");
+            Console.WriteLine("Apply To Vacancie ".PadRight(22) + "[2]");
+            Console.WriteLine("Add CV ".PadRight(22) + "[3]");
+            Console.WriteLine($"Notifications({CurrentWorker.UnreadNotificationsCount}) ".PadRight(22) + "[4]");
+            Console.WriteLine("Exit ".PadRight(22) + "[5]");
+
+            int select = int.Parse(Console.ReadLine());
+            if (select == 1)
+            {
+                database.ShowAllVacancies();
+                Console.WriteLine("Press any key to continue ...  ");
+                Console.ReadKey();
+                WorkerPage();
+            }
+            else if (select == 2)
+            {
+                database.ShowAllVacancies();
+                Console.WriteLine("Choose Vacancie with ID [-1 exit] : ");
+                int id = int.Parse(Console.ReadLine());
+                if (id == -1)
+                {
+                    WorkerPage();
+                }
+                Vacancie CurrentVacancie = database.GetVacancieById(id);
+                if (CurrentVacancie != null)
+                {
+
+                    Notification notification = new Notification
+                    {
+                        WorkerEmail = CurrentUser.Email,
+                        WorkerID = CurrentUser.Id,
+                        WorkerName = CurrentUser.Name,
+                    };
+                    CurrentVacancie.notifications.Add(notification);
+                    Console.WriteLine("Applied Vacancie successfully. Wait for Answer!");
+                }
+                else
+                {
+                    /*---------------------------*/
+                }
+            }
+            else if (select == 3)
+            {
+                CV cV = database.GetCV();
+                CurrentWorker.Cvs.Add(cV);
+            }
+            else if (select == 4)
+            {
+                CurrentWorker.ShowAllNotifications();
+                CurrentWorker.UnreadNotificationsCount = 0;
+                Console.WriteLine("Press any key to continue ...  ");
+                Console.ReadKey();
+                WorkerPage();
+            }
+            else if (select == 5)
+            {
+                Start();
+            }
         }
         public static void SignUp()
         {

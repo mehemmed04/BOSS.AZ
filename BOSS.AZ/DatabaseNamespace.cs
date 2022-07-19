@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using UserNamespace;
 using VacancieNamespace;
 using CVnamespace;
+using NotificationNamespace;
+
 namespace DatabaseNamespace
 {
     public class Database
@@ -56,6 +58,7 @@ namespace DatabaseNamespace
 
             Console.WriteLine("Employer or Worker : ");
             string choose = Console.ReadLine();
+
             if (choose.ToLower() == "employer")
             {
                 Console.WriteLine("How much do you want to Add Vacancie?");
@@ -66,6 +69,17 @@ namespace DatabaseNamespace
                     Vacancie vacancie = GetVacancie();
                     vacancies.Add(vacancie);
                 }
+                Users.Add(new Employer
+                {
+                    Name = name,
+                    Age = age,
+                    City = city,
+                    Phone = phone,
+                    Password = password,
+                    Surname = surname,
+                    Username = username,
+                      Vacancies = vacancies
+                });
             }
             else if (choose.ToLower() == "worker")
             {
@@ -156,7 +170,51 @@ namespace DatabaseNamespace
                 Speciality = Speciality,
             };
         }
-
+        public Vacancie GetVacancieById(int id)
+        {
+            foreach (var user in Users)
+            {
+                if(user is Employer)
+                {
+                    Employer emp = (Employer)user;
+                    foreach (var vacancie in emp.Vacancies)
+                    {
+                        if (vacancie.Id == id) return vacancie;
+                    }
+                }
+            }
+            return null;
+        }
+        public Worker GetWorkerById(int id)
+        {
+            foreach (var user in Users)
+            {
+                if(user is Worker)
+                {
+                    Worker worker = (Worker)user;
+                    if (worker.Id == id) return worker;
+                }
+            }
+            return null;
+        }
+        public Notification GetNotificationById(int id)
+        {
+            foreach (var user in Users)
+            {
+                if (user is Employer)
+                {
+                    Employer emp = (Employer)user;
+                    foreach (var vacancie in emp.Vacancies)
+                    {
+                        foreach (var notification in vacancie.notifications)
+                        {
+                            if (notification.Id == id) return notification;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
         public void ShowAllVacancies()
         {
             foreach (var user in Users)

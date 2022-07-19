@@ -15,16 +15,26 @@ namespace UserNamespace
         public string Password { get; set; }
         public string Username { get; set; }
         public string Surname { get; set; }
+        public string Email { get; set; }
         public string City { get; set; }
         public string Phone { get; set; }
         public int Age { get; set; }
 
     }
-    class Worker : User
+   public class Worker : User
     {
         public List<CV> Cvs { get; set; }
+        public List<string> Notifications { get; set; }=new List<string>();
+        public int UnreadNotificationsCount { get; set; } = 0;
+        public void ShowAllNotifications()
+        {
+            for (int i = 0; i < Notifications.Count; i++)
+            {
+                Console.WriteLine($"{i+1}) {Notifications[i]}");
+            }
+        }
     }
-    class Employer : User
+   public class Employer : User
     {
         public List<Vacancie> Vacancies { get; set; }
         public void ShowVacancies()
