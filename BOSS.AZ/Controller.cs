@@ -11,7 +11,7 @@ using NotificationNamespace;
 using System.IO;
 using CustomExceptionsNamespace;
 using System.Diagnostics;
-
+using FileHelperNamespace;
 namespace ControllerNamespace
 {
     public class Controller
@@ -179,10 +179,13 @@ namespace ControllerNamespace
         };
         public static void Start()
         {
+            
             while (true)
             {
                 try
                 {
+                    database = FileHelper.ReadFromJson();
+                    FileHelper.WriteToJson(database);
                     Console.Clear();
                     bool IsInt = false;
                     Console.WriteLine("SIGN IN [1]");
@@ -211,6 +214,7 @@ namespace ControllerNamespace
                 catch (Exception ex)
                 {
                     File.AppendAllText("errors.log", ex.ToString());
+                    Console.WriteLine(ex);
                 }
             }
         }
@@ -245,7 +249,6 @@ namespace ControllerNamespace
             else
             {
                 Console.WriteLine("Username or Password is incorrect. Try Again");
-                Start();
                 throw new CustomException(DateTime.Now, "Username or Password is incorrect", callStack.GetFileLineNumber(), System.Reflection.Assembly.GetExecutingAssembly().Location);
             }
 
