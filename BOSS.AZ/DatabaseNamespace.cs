@@ -7,6 +7,8 @@ using UserNamespace;
 using VacancieNamespace;
 using CVnamespace;
 using NotificationNamespace;
+using CustomExceptionsNamespace;
+using System.Diagnostics;
 
 namespace DatabaseNamespace
 {
@@ -28,6 +30,7 @@ namespace DatabaseNamespace
         {
             Console.WriteLine("Enter Username : ");
             string username = Console.ReadLine();
+            StackFrame callStack = new StackFrame(1, true);
 
             foreach (var user in Users)
             {
@@ -35,6 +38,8 @@ namespace DatabaseNamespace
                 {
                     Console.WriteLine("Tekrarlana bilmez");
                     AddUser();
+                    throw new CustomException(DateTime.Now, "This username already exists!", callStack.GetFileLineNumber(), System.Reflection.Assembly.GetExecutingAssembly().Location);
+
                 }
             }
 
@@ -78,7 +83,7 @@ namespace DatabaseNamespace
                     Password = password,
                     Surname = surname,
                     Username = username,
-                      Vacancies = vacancies
+                    Vacancies = vacancies
                 });
             }
             else if (choose.ToLower() == "worker")
@@ -174,7 +179,7 @@ namespace DatabaseNamespace
         {
             foreach (var user in Users)
             {
-                if(user is Employer)
+                if (user is Employer)
                 {
                     Employer emp = (Employer)user;
                     foreach (var vacancie in emp.Vacancies)
@@ -189,7 +194,7 @@ namespace DatabaseNamespace
         {
             foreach (var user in Users)
             {
-                if(user is Worker)
+                if (user is Worker)
                 {
                     Worker worker = (Worker)user;
                     if (worker.Id == id) return worker;

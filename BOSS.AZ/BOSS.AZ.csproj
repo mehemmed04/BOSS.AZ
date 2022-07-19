@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
+    <Compile Include="CustomExceptions.cs" />
     <Compile Include="CV.cs" />
     <Compile Include="DatabaseNamespace.cs" />
     <Compile Include="NotificationNamespace.cs" />

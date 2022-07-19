@@ -8,10 +8,15 @@ using UserNamespace;
 using VacancieNamespace;
 using CVnamespace;
 using NotificationNamespace;
+using System.IO;
+using CustomExceptionsNamespace;
+using System.Diagnostics;
+
 namespace ControllerNamespace
 {
     public class Controller
     {
+       public static StackFrame callStack = new StackFrame(1, true);
         public static User CurrentUser = null;
         public static Database database = new Database
         {
@@ -176,25 +181,37 @@ namespace ControllerNamespace
         {
             while (true)
             {
-                Console.Clear();
-                int select = 0;
-                Console.WriteLine("SIGN IN [1]");
-                Console.WriteLine("SIGN UP [2]");
-                select = int.Parse(Console.ReadLine());
-                if (select == 1)
+                try
                 {
-                    SignIn();
-                }
-                else if (select == 2)
-                {
-                    SignUp();
-                }
-                else
-                {
+                    Console.Clear();
+                    bool IsInt = false;
+                    Console.WriteLine("SIGN IN [1]");
+                    Console.WriteLine("SIGN UP [2]");
+                    IsInt = int.TryParse(Console.ReadLine(), out int select);
 
+                    if (!IsInt)
+                    {
+                        throw new CustomException(DateTime.Now, "Input Type Error. Entered charachter must be digit", callStack.GetFileLineNumber(), System.Reflection.Assembly.GetExecutingAssembly().Location);
+                    }
+                    if (select == 1)
+                    {
+                        SignIn();
+                    }
+                    else if (select == 2)
+                    {
+                        SignUp();
+                    }
+                    else
+                    {
+
+                    }
+                    Console.WriteLine("Press any key to continue ...  ");
+                    Console.ReadKey();
                 }
-                Console.WriteLine("Press any key to continue ...  ");
-                Console.ReadKey();
+                catch (Exception ex)
+                {
+                    File.AppendAllText("errors.log", ex.ToString());
+                }
             }
         }
         public static void SignIn()
@@ -221,12 +238,15 @@ namespace ControllerNamespace
                 {
                     Console.WriteLine("Oops... Something went wrong. Enter again");
                     Start();
+                    throw new CustomException(DateTime.Now, "Type Casting Error", callStack.GetFileLineNumber(), System.Reflection.Assembly.GetExecutingAssembly().Location);
+
                 }
             }
             else
             {
                 Console.WriteLine("Username or Password is incorrect. Try Again");
                 Start();
+                throw new CustomException(DateTime.Now, "Username or Password is incorrect", callStack.GetFileLineNumber(), System.Reflection.Assembly.GetExecutingAssembly().Location);
             }
 
 
@@ -269,7 +289,7 @@ namespace ControllerNamespace
                         if (n.Id == notification.Id)
                         {
                             CompanyName = vacancie.Name;
-                            CurrentVacancie=vacancie;
+                            CurrentVacancie = vacancie;
                             break;
                         }
                     }
@@ -283,7 +303,7 @@ namespace ControllerNamespace
                     {
                         worker.Notifications.Add($@"You are accepted to {CompanyName} at {DateTime.Now.ToString()}. Contact us!");
                         CurrentEmployer.Vacancies.Remove(CurrentVacancie);
-                        worker.UnreadNotificationsCount++;  
+                        worker.UnreadNotificationsCount++;
                     }
                     else if (select == 2)
                     {
@@ -313,9 +333,8 @@ namespace ControllerNamespace
             }
             else
             {
-/*---------------------------------------------*/
+                throw new CustomException(DateTime.Now, "There is not such option. Choose 1-4!", callStack.GetFileLineNumber(), System.Reflection.Assembly.GetExecutingAssembly().Location);
             }
-
 
         }
         public static void WorkerPage()
@@ -359,7 +378,8 @@ namespace ControllerNamespace
                 }
                 else
                 {
-                    /*---------------------------*/
+                    Console.WriteLine("There is not Vacancie with this ID!");
+                    throw new CustomException(DateTime.Now, "There is not Vacancie with this ID!", callStack.GetFileLineNumber(), System.Reflection.Assembly.GetExecutingAssembly().Location);
                 }
             }
             else if (select == 3)
@@ -378,6 +398,10 @@ namespace ControllerNamespace
             else if (select == 5)
             {
                 Start();
+            }
+            else
+            {
+                throw new CustomException(DateTime.Now, "There is not such option. Choose 1-4!", callStack.GetFileLineNumber(), System.Reflection.Assembly.GetExecutingAssembly().Location);
             }
         }
         public static void SignUp()
