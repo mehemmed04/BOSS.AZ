@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DatabaseNamespace;
+using UserNamespace;
 namespace FileHelperNamespace
 {
     public class FileHelper
@@ -24,7 +25,8 @@ namespace FileHelperNamespace
                 using (var jw = new JsonTextWriter(sw))
                 {
                     jw.Formatting = Formatting.Indented;
-                    serializer.Serialize(jw, database);
+
+                    serializer.Serialize(jw, database,typeof(object));
                 }
             }
         }

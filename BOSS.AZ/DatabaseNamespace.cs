@@ -37,7 +37,6 @@ namespace DatabaseNamespace
                 if (user.Username == username)
                 {
                     Console.WriteLine("Tekrarlana bilmez");
-                    AddUser();
                     throw new CustomException(DateTime.Now, "This username already exists!", callStack.GetFileLineNumber(), System.Reflection.Assembly.GetExecutingAssembly().Location);
 
                 }

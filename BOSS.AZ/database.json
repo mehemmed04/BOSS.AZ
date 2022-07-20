@@ -1,6 +1,27 @@
 {
   "Users": [
     {
+      "Cvs": [
+        {
+          "Speciality": "Programmer",
+          "GraduatedUniversity": "Baku State University",
+          "UnivercityScore": 456.6,
+          "Skills": [
+            "C++",
+            "Java"
+          ],
+          "ForeignLanguages": [
+            "English",
+            "Russian"
+          ],
+          "WorkedCompanies": null,
+          "HaveHonorsDegree": false,
+          "GitHubProfileLink": "",
+          "LİNKEDİNProfileLink": ""
+        }
+      ],
+      "Notifications": [],
+      "UnreadNotificationsCount": 0,
       "Id": 1,
       "Name": "Remzi",
       "Password": "123456",
@@ -12,6 +33,42 @@
       "Age": 18
     },
     {
+      "Cvs": [
+        {
+          "Speciality": "Programmer",
+          "GraduatedUniversity": "Baku State University",
+          "UnivercityScore": 427.3,
+          "Skills": [
+            "C++",
+            "Java",
+            "C#",
+            "HTML",
+            "CSS"
+          ],
+          "ForeignLanguages": [
+            "English",
+            "Russian",
+            "Chienese"
+          ],
+          "WorkedCompanies": [
+            {
+              "CompanyName": "Adsiz Company",
+              "StartWorkTime": "2018-02-18T00:00:00",
+              "EndWorkTime": "2020-04-23T00:00:00"
+            },
+            {
+              "CompanyName": "Adsiz Company",
+              "StartWorkTime": "2020-04-28T00:00:00",
+              "EndWorkTime": "2022-07-13T00:00:00"
+            }
+          ],
+          "HaveHonorsDegree": false,
+          "GitHubProfileLink": "",
+          "LİNKEDİNProfileLink": ""
+        }
+      ],
+      "Notifications": [],
+      "UnreadNotificationsCount": 0,
       "Id": 2,
       "Name": "Nihad",
       "Password": "123456",
@@ -23,6 +80,29 @@
       "Age": 22
     },
     {
+      "Vacancies": [
+        {
+          "Id": 1,
+          "notifications": [],
+          "Name": "Adsiz Comapny",
+          "Description": "We need clever programmer",
+          "Salary": 2500.0
+        },
+        {
+          "Id": 2,
+          "notifications": [],
+          "Name": "Adsiz Comapny",
+          "Description": "We need clever designer",
+          "Salary": 1500.0
+        },
+        {
+          "Id": 3,
+          "notifications": [],
+          "Name": "Adsiz Comapny",
+          "Description": "We need cleaner",
+          "Salary": 400.0
+        }
+      ],
       "Id": 3,
       "Name": "Elgun",
       "Password": "123456",
@@ -34,6 +114,29 @@
       "Age": 34
     },
     {
+      "Vacancies": [
+        {
+          "Id": 4,
+          "notifications": [],
+          "Name": "Adsiz Comapny",
+          "Description": "We need clever Sales Manager",
+          "Salary": 2200.0
+        },
+        {
+          "Id": 5,
+          "notifications": [],
+          "Name": "Adsiz Comapny",
+          "Description": "We need Operator",
+          "Salary": 500.0
+        },
+        {
+          "Id": 6,
+          "notifications": [],
+          "Name": "Adsiz Comapny",
+          "Description": "We need driver",
+          "Salary": 800.0
+        }
+      ],
       "Id": 4,
       "Name": "Xanim",
       "Password": "123456",

@@ -16,7 +16,7 @@ namespace ControllerNamespace
 {
     public class Controller
     {
-       public static StackFrame callStack = new StackFrame(1, true);
+        public static StackFrame callStack = new StackFrame(1, true);
         public static User CurrentUser = null;
         public static Database database = new Database
         {
@@ -179,12 +179,12 @@ namespace ControllerNamespace
         };
         public static void Start()
         {
-            FileHelper.WriteToJson(database);
+
             while (true)
             {
                 try
                 {
-                    database = FileHelper.ReadFromJson();
+                    FileHelper.WriteToJson(database);
                     Console.Clear();
                     bool IsInt = false;
                     Console.WriteLine("SIGN IN [1]");
@@ -202,7 +202,6 @@ namespace ControllerNamespace
                     else if (select == 2)
                     {
                         SignUp();
-                        FileHelper.WriteToJson(database);
                     }
                     else
                     {
