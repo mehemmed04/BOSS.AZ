@@ -20,7 +20,9 @@
           "LİNKEDİNProfileLink": ""
         }
       ],
-      "Notifications": [],
+      "Notifications": [
+        "You are accepted to EBA’s Comapny at 20.07.2022 13:01:57. Contact us!"
+      ],
       "UnreadNotificationsCount": 0,
       "Id": 1,
       "Name": "Remzi",
@@ -82,24 +84,17 @@
     {
       "Vacancies": [
         {
-          "Id": 1,
-          "notifications": [],
-          "Name": "Adsiz Comapny",
-          "Description": "We need clever programmer",
-          "Salary": 2500.0
-        },
-        {
           "Id": 2,
           "notifications": [],
-          "Name": "Adsiz Comapny",
-          "Description": "We need clever designer",
+          "Name": "EBA’s Comapny",
+          "Description": "High degree of self-motivation and strong career aspirations\r\nUniversity diploma (Bachelor and Master)\r\nAdvanced written and spoken Azerbaijani, English; Russian is advantage\r\nAbility to thrive in an environment of pressing deadlines and dynamic conditions and work under pressure\r\nExcellent knowledge of MS Office programs ",
           "Salary": 1500.0
         },
         {
           "Id": 3,
           "notifications": [],
-          "Name": "Adsiz Comapny",
-          "Description": "We need cleaner",
+          "Name": "Atlas Ventures Comapny",
+          "Description": "Previous experience within Public Relations required\r\nComputer literate in Microsoft Window applications required\r\nUniversity/College degree in a related discipline preferred\r\nExcellent verbal and written communication skills in Azerbaijani and English, and Russian, preferably\r\nStrong interpersonal and problem solving abilities\r\nHighly responsible & reliable\r\nAbility to focus attention on guest needs, remaining calm and courteous at all",
           "Salary": 400.0
         }
       ],
@@ -118,22 +113,22 @@
         {
           "Id": 4,
           "notifications": [],
-          "Name": "Adsiz Comapny",
-          "Description": "We need clever Sales Manager",
+          "Name": "Superscapes Comapny",
+          "Description": "4+ years of work experience in copywriting\r\nExcellent knowledge of Azerbaijani and Russian languages\r\nFamiliar with all proverbs, phraseologies, aphorisms, idioms\r\nGood knowledge of English is big plus.",
           "Salary": 2200.0
         },
         {
           "Id": 5,
           "notifications": [],
-          "Name": "Adsiz Comapny",
-          "Description": "We need Operator",
+          "Name": "Thump Coffee Comapny",
+          "Description": "Knowledge and expertise in Azerbaijan Labor Regulations (essential).\r\nStrong knowledge/expertise of HR record keeping (essential).\r\nKnowledge and expertise in Payroll Processes and rules (essential).",
           "Salary": 500.0
         },
         {
           "Id": 6,
           "notifications": [],
-          "Name": "Adsiz Comapny",
-          "Description": "We need driver",
+          "Name": "Superscapes Comapny",
+          "Description": "Prepare and develop marketing strategies in accordance with the company's goals;\r\nManage all marketing activities related to the company and marketing department in general;\r\n        Monitor the effectiveness of marketing communications and preparing appropriate reports;\r\n        Market research and client attraction; \r\nPromote the venue as a brand;\r\n        Anticipate new opportunities to maintain relationship with important clients;\r\nEstablish the company strategy to achieve set sales targets;",
           "Salary": 800.0
         }
       ],

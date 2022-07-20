@@ -124,21 +124,38 @@ namespace ControllerNamespace
                              {
                                  new Vacancie
                                  {
-                                      Name="Adsiz Comapny",
+                                      Name="EBA’s Comapny",
                                        Salary=2500,
-                                        Description="We need clever programmer"
+                                        Description=@"Higher education in Economics, Finance and Business Administration
+At least 1-3 years of experience in Finance and Accounting
+Above average Excel skills
+Good knowledge of English, and Azerbaijani languages
+Financial Accounting (F3) certification is advantage
+Good analytical skills
+Good interpersonal communication skills
+Understanding of financial analysis"
                                  },
                                   new Vacancie
                                   {
-                                       Name="Adsiz Comapny",
+                                       Name="EBA’s Comapny",
                                        Salary=1500,
-                                        Description="We need clever designer"
+                                        Description=@"High degree of self-motivation and strong career aspirations
+University diploma (Bachelor and Master)
+Advanced written and spoken Azerbaijani, English; Russian is advantage
+Ability to thrive in an environment of pressing deadlines and dynamic conditions and work under pressure
+Excellent knowledge of MS Office programs "
                                   },
                                   new Vacancie
                                   {
-                                       Name="Adsiz Comapny",
+                                       Name="Atlas Ventures Comapny",
                                        Salary=400,
-                                        Description="We need cleaner"
+                                        Description=@"Previous experience within Public Relations required
+Computer literate in Microsoft Window applications required
+University/College degree in a related discipline preferred
+Excellent verbal and written communication skills in Azerbaijani and English, and Russian, preferably
+Strong interpersonal and problem solving abilities
+Highly responsible & reliable
+Ability to focus attention on guest needs, remaining calm and courteous at all"
                                   }
                              }
                  },
@@ -157,21 +174,32 @@ namespace ControllerNamespace
                              {
                                  new Vacancie
                                  {
-                                      Name="Adsiz Comapny",
+                                      Name="Superscapes Comapny",
                                        Salary=2200,
-                                        Description="We need clever Sales Manager"
+                                        Description=@"4+ years of work experience in copywriting
+Excellent knowledge of Azerbaijani and Russian languages
+Familiar with all proverbs, phraseologies, aphorisms, idioms
+Good knowledge of English is big plus."
                                  },
                                   new Vacancie
                                   {
-                                       Name="Adsiz Comapny",
+                                       Name="Thump Coffee Comapny",
                                        Salary=500,
-                                        Description="We need Operator"
+                                        Description=@"Knowledge and expertise in Azerbaijan Labor Regulations (essential).
+Strong knowledge/expertise of HR record keeping (essential).
+Knowledge and expertise in Payroll Processes and rules (essential)."
                                   },
                                   new Vacancie
                                   {
-                                       Name="Adsiz Comapny",
+                                       Name="Superscapes Comapny",
                                        Salary=800,
-                                        Description="We need driver"
+                                        Description=@"Prepare and develop marketing strategies in accordance with the company's goals;
+Manage all marketing activities related to the company and marketing department in general;
+        Monitor the effectiveness of marketing communications and preparing appropriate reports;
+        Market research and client attraction; 
+Promote the venue as a brand;
+        Anticipate new opportunities to maintain relationship with important clients;
+Establish the company strategy to achieve set sales targets;"
                                   }
                              }
                  }
