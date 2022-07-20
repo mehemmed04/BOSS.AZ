@@ -1,0 +1,48 @@
+{
+  "Users": [
+    {
+      "Id": 1,
+      "Name": "Remzi",
+      "Password": "123456",
+      "Username": "hesenof_075",
+      "Surname": "Hesenov",
+      "Email": "remzihesenoff075@gmail.com",
+      "City": "Naxhivan",
+      "Phone": "+994552554321",
+      "Age": 18
+    },
+    {
+      "Id": 2,
+      "Name": "Nihad",
+      "Password": "123456",
+      "Username": "nihat_eminov",
+      "Surname": "Eminov",
+      "Email": "nihateminov00@gmail.com",
+      "City": "Baku",
+      "Phone": "+994778526482",
+      "Age": 22
+    },
+    {
+      "Id": 3,
+      "Name": "Elgun",
+      "Password": "123456",
+      "Username": "elgun_123",
+      "Surname": "Memmedzade",
+      "Email": "elgunmemmedxade34@gmail.com",
+      "City": "Baku",
+      "Phone": "+994555876382",
+      "Age": 34
+    },
+    {
+      "Id": 4,
+      "Name": "Xanim",
+      "Password": "123456",
+      "Username": "xanim_quluyeva",
+      "Surname": "Quluyeva",
+      "Email": "xanimquluyeva989@gmail.com",
+      "City": "Baku",
+      "Phone": "+994555642192",
+      "Age": 44
+    }
+  ]
+}

@@ -179,13 +179,12 @@ namespace ControllerNamespace
         };
         public static void Start()
         {
-            
+            FileHelper.WriteToJson(database);
             while (true)
             {
                 try
                 {
                     database = FileHelper.ReadFromJson();
-                    FileHelper.WriteToJson(database);
                     Console.Clear();
                     bool IsInt = false;
                     Console.WriteLine("SIGN IN [1]");
@@ -203,6 +202,7 @@ namespace ControllerNamespace
                     else if (select == 2)
                     {
                         SignUp();
+                        FileHelper.WriteToJson(database);
                     }
                     else
                     {
@@ -213,7 +213,10 @@ namespace ControllerNamespace
                 }
                 catch (Exception ex)
                 {
-                    File.AppendAllText("errors.log", ex.ToString());
+                    string CURRENT_PATH = Directory.GetCurrentDirectory();
+                    DirectoryInfo dir = new DirectoryInfo(CURRENT_PATH);
+                    CURRENT_PATH = dir.Parent.Parent.FullName;
+                    File.AppendAllText(CURRENT_PATH + "/errors.log", ex.ToString());
                     Console.WriteLine(ex);
                 }
             }
@@ -329,6 +332,7 @@ namespace ControllerNamespace
             {
                 Vacancie vacancie = database.GetVacancie();
                 CurrentEmployer.Vacancies.Add(vacancie);
+                FileHelper.WriteToJson(database);
             }
             else if (select == 4)
             {
@@ -389,6 +393,7 @@ namespace ControllerNamespace
             {
                 CV cV = database.GetCV();
                 CurrentWorker.Cvs.Add(cV);
+                FileHelper.WriteToJson(database);
             }
             else if (select == 4)
             {

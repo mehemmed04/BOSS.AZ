@@ -13,9 +13,14 @@ namespace FileHelperNamespace
         public static void WriteToJson(Database database)
         {
             var serializer = new JsonSerializer();
+            string CURRENT_PATH = Directory.GetCurrentDirectory();
 
-            using (var sw = new StreamWriter("database.json"))
+            DirectoryInfo dir = new DirectoryInfo(CURRENT_PATH);
+             CURRENT_PATH = dir.Parent.Parent.FullName;
+
+            using (var sw = new StreamWriter(CURRENT_PATH + "/database.json"))
             {
+
                 using (var jw = new JsonTextWriter(sw))
                 {
                     jw.Formatting = Formatting.Indented;
@@ -28,7 +33,12 @@ namespace FileHelperNamespace
         {
             Database resultDatabase = null;
             var serializer = new JsonSerializer();
-            using (var sr = new StreamReader("database.json"))
+            string CURRENT_PATH = Directory.GetCurrentDirectory();
+
+            DirectoryInfo dir = new DirectoryInfo(CURRENT_PATH);
+             CURRENT_PATH = dir.Parent.Parent.FullName;
+
+            using (var sr = new StreamReader(CURRENT_PATH + "/database.json"))
             {
                 using (var jr = new JsonTextReader(sr))
                 {
