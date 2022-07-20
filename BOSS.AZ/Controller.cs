@@ -12,6 +12,8 @@ using System.IO;
 using CustomExceptionsNamespace;
 using System.Diagnostics;
 using FileHelperNamespace;
+using System.Threading;
+
 namespace ControllerNamespace
 {
     public class Controller
@@ -278,7 +280,10 @@ Establish the company strategy to achieve set sales targets;"
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Username or Password is incorrect. Try Again");
+                Console.ForegroundColor = ConsoleColor.White;
+                Thread.Sleep(1500);
                 throw new CustomException(DateTime.Now, "Username or Password is incorrect", callStack.GetFileLineNumber(), System.Reflection.Assembly.GetExecutingAssembly().Location);
             }
 

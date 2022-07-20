@@ -20,9 +20,7 @@
           "LİNKEDİNProfileLink": ""
         }
       ],
-      "Notifications": [
-        "You are accepted to EBA’s Comapny at 20.07.2022 13:01:57. Contact us!"
-      ],
+      "Notifications": [],
       "UnreadNotificationsCount": 0,
       "Id": 1,
       "Name": "Remzi",
@@ -83,6 +81,13 @@
     },
     {
       "Vacancies": [
+        {
+          "Id": 1,
+          "notifications": [],
+          "Name": "EBA’s Comapny",
+          "Description": "Higher education in Economics, Finance and Business Administration\r\nAt least 1-3 years of experience in Finance and Accounting\r\nAbove average Excel skills\r\nGood knowledge of English, and Azerbaijani languages\r\nFinancial Accounting (F3) certification is advantage\r\nGood analytical skills\r\nGood interpersonal communication skills\r\nUnderstanding of financial analysis",
+          "Salary": 2500.0
+        },
         {
           "Id": 2,
           "notifications": [],
